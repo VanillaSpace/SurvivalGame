@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     private Vector2 curMovementInput;
+    public float jumpForce;
+    public LayerMask groundLayerMask;
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -87,4 +89,41 @@ public class PlayerController : MonoBehaviour
             curMovementInput = Vector2.zero;
         }
     }
+
+
+    // called when we press down on the spacebar - managed by the Input System
+    public void OnJumpInput (InputAction.CallbackContext context)
+    {
+        // is this the first frame we're pressing the button?
+        if (context.phase == InputActionPhase.Started)
+        {
+            // are we standing on the ground?
+            if (IsGrounded())
+            {
+                // add force updwards
+                rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+        }
+    }
+
+    bool IsGrounded()
+    {
+        Ray[] rays = new Ray[4]
+        {
+        new Ray(transform.position + (transform.forward * 0.2f), Vector3.down),
+        new Ray(transform.position + (-transform.forward * 0.2f), Vector3.down),
+        new Ray(transform.position + (-transform.right * 0.2f), Vector3.down),
+        new Ray(transform.position + (transform.right * 0.2f), Vector3.down)
+        };
+
+        for (int i = 0; i < rays.Length; i++)
+        {
+            if (Physics.Raycast(rays[i], 0.1f, groundLayerMask))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

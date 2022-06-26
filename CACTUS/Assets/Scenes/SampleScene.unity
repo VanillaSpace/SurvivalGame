@@ -271,7 +271,19 @@ MonoBehaviour:
     m_ActionId: 5b7eca5d-b9f1-4efe-9d9d-4392b39ea63a
     m_ActionName: Main/AltAttack[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 194442639}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnJumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 78fe814f-bb98-4427-b4fa-406c147bea53
     m_ActionName: Main/Jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -320,6 +332,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  jumpForce: 80
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 55
   cameraContainer: {fileID: 64983835}
   minXLook: -85
   maxXLook: 85
