@@ -243,6 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194442635}
   - component: {fileID: 194442639}
+  - component: {fileID: 194442640}
   - component: {fileID: 194442636}
   - component: {fileID: 194442637}
   - component: {fileID: 194442638}
@@ -418,6 +419,63 @@ MonoBehaviour:
   minXLook: -85
   maxXLook: 85
   lookSensitivity: 0.2
+--- !u!114 &194442640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194442634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7144f12904276da468d14a730801fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    currValue: 0
+    maxValue: 100
+    startValue: 100
+    regenRate: 0
+    decayRate: 0
+    uiBar: {fileID: 1065061864}
+  hunger:
+    currValue: 0
+    maxValue: 500
+    startValue: 300
+    regenRate: 0
+    decayRate: 2
+    uiBar: {fileID: 1702778770}
+  thirst:
+    currValue: 0
+    maxValue: 500
+    startValue: 300
+    regenRate: 0
+    decayRate: 2
+    uiBar: {fileID: 217240249}
+  sleep:
+    currValue: 0
+    maxValue: 500
+    startValue: 100
+    regenRate: 1
+    decayRate: 0
+    uiBar: {fileID: 859545918}
+  noHungerHealthDecay: 1
+  noThirstHealthDecay: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 757857302}
+        m_TargetAssemblyTypeName: DamageIndicator, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &217240247
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +488,7 @@ GameObject:
   - component: {fileID: 217240250}
   - component: {fileID: 217240249}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Thirst_ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,13 +885,14 @@ GameObject:
   - component: {fileID: 757857299}
   - component: {fileID: 757857301}
   - component: {fileID: 757857300}
+  - component: {fileID: 757857302}
   m_Layer: 5
   m_Name: DamageIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &757857299
 RectTransform:
   m_ObjectHideFlags: 0
@@ -861,13 +920,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757857298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -892,6 +951,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757857298}
   m_CullTransparentMesh: 1
+--- !u!114 &757857302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757857298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98ae4677436cfd47a3e12726520f035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageImg: {fileID: 757857300}
+  flashSpeed: 0.5
 --- !u!1 &859545916
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +977,7 @@ GameObject:
   - component: {fileID: 859545919}
   - component: {fileID: 859545918}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Sleep_ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1017,7 +1090,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 70
   orthographic: 0
@@ -1063,7 +1136,6 @@ GameObject:
   - component: {fileID: 1047276763}
   - component: {fileID: 1047276762}
   - component: {fileID: 1047276761}
-  - component: {fileID: 1047276760}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -1071,23 +1143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1047276760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047276759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1047276761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,7 +1222,7 @@ GameObject:
   - component: {fileID: 1065061865}
   - component: {fileID: 1065061864}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Health_ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,6 +1286,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065061862}
   m_CullTransparentMesh: 1
+--- !u!1001 &1090541261
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2144476454}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+      propertyPath: m_Name
+      value: Cactus
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
 --- !u!1 &1283192089
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,7 +1850,7 @@ GameObject:
   - component: {fileID: 1702778771}
   - component: {fileID: 1702778770}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hunger_ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1868,6 +1992,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756915014}
   m_CullTransparentMesh: 1
+--- !u!4 &1818897299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0be8fa0aad7bb2e4380ad4974a1c0286, type: 3}
+  m_PrefabInstance: {fileID: 1090541261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2130921186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,3 +2073,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130921186}
   m_CullTransparentMesh: 1
+--- !u!1 &2144476453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144476454}
+  - component: {fileID: 2144476456}
+  - component: {fileID: 2144476455}
+  m_Layer: 0
+  m_Name: Cactus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2144476454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144476453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.36, y: 2.72, z: 7.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1818897299}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2144476455
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144476453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.83869743
+  m_Height: 3.2382097
+  m_Direction: 1
+  m_Center: {x: -0.030594826, y: 1.4200418, z: 0}
+--- !u!114 &2144476456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144476453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5387eaea372b08e4193e3014e51a6b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 15
+  damageRate: 0.5
