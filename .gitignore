@@ -73,3 +73,5 @@ crashlytics-build.properties
 
 CACTUS/Library/ArtifactDB
 CACTUS/Library/
+
+CACTUS/UserSettings/
