@@ -49,7 +49,7 @@ public class ItemSlotUI : MonoBehaviour
     // called when we click on the slot
     public void OnButtonClick()
     {
-
+        Inventory.instance.SelectItem(index);
     }
 
 }

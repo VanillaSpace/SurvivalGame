@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private float camCurXRot;
     private Vector2 mouseDelta;
 
+    [HideInInspector]
+    public bool canLook = true;
 
     // components
     private Rigidbody rig;
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
     {
         Move();
     }
+
+
     void Move()
     {
         // calculate the move direction relative to where we're facing.
@@ -53,7 +57,10 @@ public class PlayerController : MonoBehaviour
     void LateUpdate()
     {
         // We want to rotate the camera after the player has moved. 
-        CameraLook();
+        if (canLook == true)
+        {
+            CameraLook();
+        }
     }
 
     void CameraLook()
@@ -125,5 +132,12 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    public void ToggleCursor(bool toggle)
+    {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
+    }
+
 
 }

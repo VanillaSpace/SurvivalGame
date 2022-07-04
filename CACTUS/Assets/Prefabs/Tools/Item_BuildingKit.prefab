@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6405890825696994321}
   - component: {fileID: 3459310457718138584}
   - component: {fileID: 1317226429283434176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Item_BuildingKit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b9f1eef7bc6d4a94b9c3979ac75de71d, type: 3}
       propertyPath: m_Name
       value: BuildingKit
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b9f1eef7bc6d4a94b9c3979ac75de71d, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f1eef7bc6d4a94b9c3979ac75de71d, type: 3}
