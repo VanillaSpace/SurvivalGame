@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 5.544203, g: 9.409134, b: 16.729523, a: 1}
+  m_IndirectSpecularColor: {r: 5.5441875, g: 9.408951, b: 16.729584, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -635,11 +635,35 @@ MonoBehaviour:
     m_ActionId: f1d2a858-09a3-41fb-bb24-90b0a3aa4260
     m_ActionName: Main/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 194442643}
+        m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
+        m_MethodName: OnAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ac70850a-64c3-4b03-87f1-94ba42a62cf2
     m_ActionName: Main/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 194442643}
+        m_TargetAssemblyTypeName: EquipManager, Assembly-CSharp
+        m_MethodName: OnAltAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5b7eca5d-b9f1-4efe-9d9d-4392b39ea63a
     m_ActionName: Main/AltAttack[/Mouse/rightButton]
   - m_PersistentCalls:
@@ -869,7 +893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2594d1533d9d748a74a20c075fb4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testItem: {fileID: 0}
   curEquip: {fileID: 0}
   equipParent: {fileID: 1798092952}
 --- !u!1 &217240247

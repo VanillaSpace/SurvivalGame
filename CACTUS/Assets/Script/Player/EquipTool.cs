@@ -42,4 +42,10 @@ public class EquipTool : Equip
     {
         attacking = false;
     }
+    
+    public void OnHit()
+    {
+        Debug.Log("Hit Detected");
+    }
+
 }

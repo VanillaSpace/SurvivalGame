@@ -30,7 +30,7 @@ public class EquipManager : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && curEquip != null && controller.canLook == true)
         {
-            //curEquip.OnAttackInput();
+            curEquip.OnAttackInput();
         }
     }
 
@@ -39,7 +39,7 @@ public class EquipManager : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed && curEquip != null && controller.canLook == true)
         {
-            //curEquip.OnAltAttackInput();
+            curEquip.OnAltAttackInput();
         }
     }
 

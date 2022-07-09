@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7418042363023556409}
   - component: {fileID: 6297581437129348226}
+  - component: {fileID: 8874036620464642660}
   m_Layer: 7
   m_Name: Equip_Axe
   m_TagString: Untagged
@@ -46,6 +47,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed56c38edfe5b445993a7282ad0b89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRate: 0.8
+  attackDistance: 1
+  doesGatherResources: 1
+  doesDealDamage: 0
+  damage: 0
+--- !u!95 &8874036620464642660
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418042363023556408}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7ff0a42872d8be946848d294e64aaa33, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7418042363948907650
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,11 +302,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff6f743dab65052449eb2bfa7dda7d8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.77
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff6f743dab65052449eb2bfa7dda7d8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.59
+      value: -0.62
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ff6f743dab65052449eb2bfa7dda7d8b, type: 3}
       propertyPath: m_LocalPosition.z
