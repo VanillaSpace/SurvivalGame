@@ -5,8 +5,7 @@ using UnityEngine.InputSystem;
 
 public class EquipManager : MonoBehaviour
 {
-    public ItemData testItem;
-    public EquipManager curEquip;
+    public Equip curEquip;
     public Transform equipParent;
 
     private PlayerController controller;
@@ -23,7 +22,7 @@ public class EquipManager : MonoBehaviour
 
     void Start ()
     {
-        EquipNew(testItem);
+
     }
 
     //called when we press the Left Mouse Button - managed by the Input System
@@ -48,7 +47,8 @@ public class EquipManager : MonoBehaviour
     public void EquipNew(ItemData item)
     {
         UnEquip();
-        Instantiate(item.equipPrefab, equipParent);
+        curEquip = Instantiate(item.equipPrefab, equipParent).GetComponent<Equip>();
+
     }
 
     // called when we un-equip an item
