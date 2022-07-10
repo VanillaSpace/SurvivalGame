@@ -7,10 +7,17 @@ public class EquipTool : Equip
     public float attackRate;
     private bool attacking;
     public float attackDistance;
-    
+
+    public enum ToolUsedToGather
+    {
+        Wood,
+        Stone
+    };
+
     [Header("Resource Gathering")]
     public bool doesGatherResources;
-    
+    public ToolUsedToGather toolType;
+
     [Header("Combat")]
     public bool doesDealDamage;
     public int damage;
@@ -42,10 +49,35 @@ public class EquipTool : Equip
     {
         attacking = false;
     }
-    
+
     public void OnHit()
     {
-        Debug.Log("Hit Detected");
+        Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, attackDistance))
+        {
+            // did we hit a resource?
+            if (doesGatherResources && hit.collider.GetComponent<Resource>())
+            {
+                var resType = hit.collider.GetComponent<Resource>().resourceType;
+
+                if ((int)resType == (int)toolType)
+                {
+                    hit.collider.GetComponent<Resource>().Gather(hit.point, hit.normal);
+                }
+                else
+                {
+                    Debug.Log("Incorrect Tool!");
+                }
+            }
+
+            // did we hit a damagable?
+            if (doesDealDamage && hit.collider.GetComponent<IDamageable>() != null)
+            {
+                hit.collider.GetComponent<IDamageable>().TakePhysicalDmg(damage);
+            }
+        }
     }
 
 }
