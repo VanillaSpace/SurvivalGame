@@ -34,7 +34,8 @@ public class Resource : MonoBehaviour
         }
 
         // create hit particle
-        Instantiate(hitParticle, hitPoint, Quaternion.LookRotation(hitNormal, Vector3.up));
+        Destroy(Instantiate(hitParticle, hitPoint, Quaternion.LookRotation(hitNormal,Vector3.up)), 1.0f);
+
 
         // if we're empty, destroy the resource
         if (capacity <= 0)
