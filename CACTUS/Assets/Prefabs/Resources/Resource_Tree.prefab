@@ -59,10 +59,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bd7adc3e3976a4e96591235b584ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToGive: {fileID: 11400000, guid: 7a1d393dc7af4d5468d08daa129328ed, type: 2}
   quantityPerHit: 1
+  resourceType: 0
   capacity: 5
   hitParticle: {fileID: 496213542057665232, guid: 3b22cfbfec4bf5c48a83f2078f2d425d, type: 3}
+  itemDataTable:
+  - itemToGive: {fileID: 11400000, guid: 7a1d393dc7af4d5468d08daa129328ed, type: 2}
+  - itemToGive: {fileID: 11400000, guid: 7c74136790e2f694c95c8bd91d6ce19b, type: 2}
 --- !u!1001 &7331807646460339524
 PrefabInstance:
   m_ObjectHideFlags: 0

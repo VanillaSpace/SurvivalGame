@@ -46,11 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bd7adc3e3976a4e96591235b584ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceType: 1
-  itemToGive: {fileID: 11400000, guid: be43e9fd3fc8a204ea436540c623a44d, type: 2}
   quantityPerHit: 1
+  resourceType: 1
   capacity: 5
   hitParticle: {fileID: 496213542057665232, guid: d17b9d59cfca6cd49b24c0073412b0ed, type: 3}
+  itemDataTable:
+  - itemToGive: {fileID: 11400000, guid: be43e9fd3fc8a204ea436540c623a44d, type: 2}
 --- !u!136 &924065566694717803
 CapsuleCollider:
   m_ObjectHideFlags: 0

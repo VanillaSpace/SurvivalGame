@@ -11,11 +11,18 @@ public class Resource : MonoBehaviour
         Stone
     };
 
-    public ResourceType resourceType;
-    public ItemData itemToGive;
+    [System.Serializable]
+    public class ItemDataTable
+    {
+        public ItemData itemToGive;
+    }
+
     public int quantityPerHit = 1;
+    public ResourceType resourceType;
     public int capacity;
     public GameObject hitParticle;
+
+    public ItemDataTable[] itemDataTable;
 
     // called when the player hits the resource with an axe
     public void Gather(Vector3 hitPoint, Vector3 hitNormal)
@@ -30,7 +37,10 @@ public class Resource : MonoBehaviour
 
             capacity -= 1;
 
-            Inventory.instance.AddItem(itemToGive);
+            for (int x = 0; x < itemDataTable.Length; x++)
+            {
+                Inventory.instance.AddItem(itemDataTable[x].itemToGive);
+            }
         }
 
         // create hit particle
